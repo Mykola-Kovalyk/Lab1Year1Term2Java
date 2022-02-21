@@ -1,10 +1,8 @@
 package ua.lviv.lpnu.icta.iot.mykola.kovalyk.lab1;
 
-public record GasMeter(float nominalDistanceInMillimeters, String name, float maxVolumeConsumpltion) {
+public record GasMeter(float nominalDistanceInMillimeters, String name, float maxVolumeConsumpltion, float width, float height, float length) {
 	
-	private static float width = 1.f;
-	private static float height = 2.f;
-	private static float length = 3.f;
+	private static final float energyConsumptionInWatts = 5.f;
 	
 	
 	
@@ -15,11 +13,7 @@ public record GasMeter(float nominalDistanceInMillimeters, String name, float ma
 	
 	public GasMeter(float nominalDistanceInMillimeters, String name, float maxVolumeConsumpltion)
 	{
-		System.out.println("This is a chained constructor!");
-		
-		this.nominalDistanceInMillimeters = nominalDistanceInMillimeters;
-		this.maxVolumeConsumpltion = maxVolumeConsumpltion;
-		this.name = name;
+		this(nominalDistanceInMillimeters, name, maxVolumeConsumpltion, 1.f, 2.f, 3.f);
 	}
 	
 	
@@ -29,13 +23,14 @@ public record GasMeter(float nominalDistanceInMillimeters, String name, float ma
 			"GasMeter: "
 			+ "\n\tname: " + name 
 			+ "\n\tnominalDistanceInMillimeters: " + nominalDistanceInMillimeters
-			+ "\n\tmaxVolumeConsumpltion: " + maxVolumeConsumpltion; 
+			+ "\n\tmaxVolumeConsumpltion: " + maxVolumeConsumpltion
+			+ "\n\tdimensions: x - " + width + " y - " + length + " z - " + height; 
 	}	
 	
 	
 	
-	public static float[] getDimensions()
+	public static float getEnergyConsumptionInWatts()
 	{
-		return new float[]{width, height, length};
+		return energyConsumptionInWatts;
 	}
 }
